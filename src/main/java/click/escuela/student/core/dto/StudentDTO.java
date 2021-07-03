@@ -7,12 +7,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import click.escuela.student.core.enumerator.EducationLevels;
 import click.escuela.student.core.enumerator.GenderType;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@Builder
 public class StudentDTO {
 
 	@JsonProperty(value = "id")
