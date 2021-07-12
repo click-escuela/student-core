@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import click.escuela.student.core.dto.GradeDTO;
 
+
 @FeignClient(name = "grades", url ="${provider.grade.url}")
 public interface GradeController {
 
