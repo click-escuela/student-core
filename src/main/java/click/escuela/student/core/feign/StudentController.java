@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import click.escuela.student.core.dto.StudentDTO;
 import click.escuela.student.core.exception.StudentException;
 
-@FeignClient(name = "students", url = "localhost:8090")
+@FeignClient(name = "students", url ="${provider.student.url}")
 public interface StudentController {
 
 	@GetMapping(value = "/click-escuela/school-admin/school/{schoolId}/student/{studentId}")
