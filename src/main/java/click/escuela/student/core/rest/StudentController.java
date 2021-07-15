@@ -40,4 +40,5 @@ public class StudentController {
 		return ResponseEntity.status(HttpStatus.ACCEPTED)
 				.body("prueba exitosa");
 	}
+
 }
