@@ -7,7 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import click.escuela.student.core.dto.GradeDTO;
 
-@FeignClient(name = "grades", url ="localhost:8091")
+
+@FeignClient(name = "grades", url ="${provider.grade.url}")
 public interface GradeController {
 
 	@GetMapping(value = "/click-escuela/school/{schoolId}/grade/student/{studentId}")
