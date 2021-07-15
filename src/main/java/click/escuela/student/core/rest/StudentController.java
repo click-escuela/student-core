@@ -33,4 +33,10 @@ public class StudentController {
 			@PathVariable("studentId") String studentId) throws TransactionException {
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(studentService.getGrades(schoolId, studentId));
 	}
+	@GetMapping(value = "prueba")
+	public ResponseEntity<String> prueba()
+			throws TransactionException {
+		return ResponseEntity.status(HttpStatus.ACCEPTED)
+				.body("prueba exitosa");
+	}
 }
