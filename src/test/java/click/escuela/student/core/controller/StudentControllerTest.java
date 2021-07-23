@@ -30,7 +30,7 @@ import click.escuela.student.core.dto.GradeDTO;
 import click.escuela.student.core.exception.TransactionException;
 import click.escuela.student.core.rest.StudentController;
 import click.escuela.student.core.rest.handler.Handler;
-import click.escuela.student.core.service.impl.StudentServiceImpl;
+import click.escuela.student.core.service.impl.GradeServiceImpl;
 
 @EnableWebMvc
 @RunWith(MockitoJUnitRunner.class)
@@ -42,7 +42,7 @@ public class StudentControllerTest {
 	private StudentController studentController;
 
 	@Mock
-	private StudentServiceImpl studentService;
+	private GradeServiceImpl studentService;
 
 	private ObjectMapper mapper;
 	private String studentId;

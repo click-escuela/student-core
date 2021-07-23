@@ -21,7 +21,7 @@ import click.escuela.student.core.connector.StudentConnector;
 import click.escuela.student.core.dto.GradeDTO;
 import click.escuela.student.core.exception.StudentException;
 import click.escuela.student.core.exception.TransactionException;
-import click.escuela.student.core.service.impl.StudentServiceImpl;
+import click.escuela.student.core.service.impl.GradeServiceImpl;
 
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -34,7 +34,7 @@ public class StudentServiceTest {
 	@Mock
 	private GradeConnector gradeConnector;
 
-	private StudentServiceImpl studentServiceImpl = new StudentServiceImpl();
+	private GradeServiceImpl gradeServiceImpl = new GradeServiceImpl();
 	private String studentId;
 	private String schoolId;
 	private Boolean fullDetail;
@@ -45,13 +45,13 @@ public class StudentServiceTest {
 		schoolId = "1234";
 		fullDetail = false;
 		
-		ReflectionTestUtils.setField(studentServiceImpl, "studentConnector", studentConnector);
-		ReflectionTestUtils.setField(studentServiceImpl, "gradeConnector", gradeConnector);
+		ReflectionTestUtils.setField(gradeServiceImpl, "studentConnector", studentConnector);
+		ReflectionTestUtils.setField(gradeServiceImpl, "gradeConnector", gradeConnector);
 	}
 
 	@Test
 	public void whenGetGradeIsOK() throws TransactionException {
-		studentServiceImpl.getGrades(schoolId, studentId.toString());
+		gradeServiceImpl.getGrades(schoolId, studentId.toString());
 		verify(gradeConnector).getByStudent(schoolId, studentId);
 		verify(studentConnector).getById(schoolId, studentId, fullDetail);
 	}
@@ -59,7 +59,7 @@ public class StudentServiceTest {
 	@Test
 	public void whenGetGradesIsEmpty() throws TransactionException {
 		when(gradeConnector.getByStudent(Mockito.any(), Mockito.any())).thenReturn(new ArrayList<>());
-		List<GradeDTO> grades = studentServiceImpl.getGrades(schoolId, studentId.toString());
+		List<GradeDTO> grades = gradeServiceImpl.getGrades(schoolId, studentId.toString());
 		assertThat(grades.isEmpty()).isTrue();
 	}
 	
@@ -68,7 +68,7 @@ public class StudentServiceTest {
 		Mockito.when(studentConnector.getById(schoolId.toString(), studentId.toString(), fullDetail))
 		.thenThrow(StudentException.class);
 		assertThatExceptionOfType(StudentException.class).isThrownBy(() -> {
-			studentServiceImpl.getGrades(schoolId.toString(), studentId.toString());
+			gradeServiceImpl.getGrades(schoolId.toString(), studentId.toString());
 		}).withMessage(null);
 	}
 
