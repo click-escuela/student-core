@@ -5,11 +5,13 @@ import java.util.UUID;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Builder
 public class ActivityDTO {
 	@JsonProperty(value = "id")
 	private String id;
@@ -17,9 +19,9 @@ public class ActivityDTO {
 	@JsonProperty(value = "name")
 	private String name;
 
-	@JsonProperty(value = "school_id")
+	@JsonProperty(value = "school_id" )
 	private Integer schoolId;
-
+	
 	@JsonProperty(value = "course_id")
 	private UUID courseId;
 	
