@@ -5,23 +5,23 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import click.escuela.student.core.connector.GradeConnector;
+import click.escuela.student.core.connector.ActivityConnector;
 import click.escuela.student.core.connector.StudentConnector;
-import click.escuela.student.core.dto.GradeDTO;
+import click.escuela.student.core.dto.ActivityDTO;
 import click.escuela.student.core.exception.TransactionException;
 
 @Service
-public class StudentServiceImpl {
+public class ActivityServiceImpl {
 
 	@Autowired
 	private StudentConnector studentConnector;
 	
 	@Autowired
-	private GradeConnector gradeConnector;
+	private ActivityConnector activityConnector;
 	
-	public List<GradeDTO> getGrades(String schoolId, String studentId) throws TransactionException {
+	public List<ActivityDTO> getActivitiesByStudentId(String schoolId, String studentId) throws TransactionException {
 		studentConnector.getById(schoolId, studentId, false);
-		return gradeConnector.getByStudent(schoolId, studentId);
+		return activityConnector.getActivitiesByStudentId(schoolId, studentId);
 	}
 
 }
