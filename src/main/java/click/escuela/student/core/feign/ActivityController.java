@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import click.escuela.student.core.dto.ActivityDTO;
 
 
-@FeignClient(name = "activities", url ="${provider.activity.url}")
+@FeignClient(name = "activities")
 public interface ActivityController {
 
 	@GetMapping(value = "/click-escuela/school/{schoolId}/activity/student/{studentId}")
