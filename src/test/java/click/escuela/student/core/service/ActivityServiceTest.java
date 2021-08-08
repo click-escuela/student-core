@@ -16,25 +16,24 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import click.escuela.student.core.connector.GradeConnector;
+import click.escuela.student.core.connector.ActivityConnector;
 import click.escuela.student.core.connector.StudentConnector;
-import click.escuela.student.core.dto.GradeDTO;
+import click.escuela.student.core.dto.ActivityDTO;
 import click.escuela.student.core.exception.StudentException;
 import click.escuela.student.core.exception.TransactionException;
-import click.escuela.student.core.service.impl.GradeServiceImpl;
-
+import click.escuela.student.core.service.impl.ActivityServiceImpl;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class StudentServiceTest {
+public class ActivityServiceTest {
 
 	@Mock
 	private StudentConnector studentConnector;
 	
 	@Mock
-	private GradeConnector gradeConnector;
+	private ActivityConnector activityConnector;
 
-	private GradeServiceImpl gradeServiceImpl = new GradeServiceImpl();
+	private ActivityServiceImpl activityServiceImpl = new ActivityServiceImpl();
 	private String studentId;
 	private String schoolId;
 	private Boolean fullDetail;
@@ -45,22 +44,22 @@ public class StudentServiceTest {
 		schoolId = "1234";
 		fullDetail = false;
 		
-		ReflectionTestUtils.setField(gradeServiceImpl, "studentConnector", studentConnector);
-		ReflectionTestUtils.setField(gradeServiceImpl, "gradeConnector", gradeConnector);
+		ReflectionTestUtils.setField(activityServiceImpl, "studentConnector", studentConnector);
+		ReflectionTestUtils.setField(activityServiceImpl, "activityConnector", activityConnector);
 	}
 
 	@Test
 	public void whenGetGradeIsOK() throws TransactionException {
-		gradeServiceImpl.getGrades(schoolId, studentId.toString());
-		verify(gradeConnector).getByStudent(schoolId, studentId);
+		activityServiceImpl.getActivitiesByStudentId(schoolId, studentId.toString());
+		verify(activityConnector).getActivitiesByStudentId(schoolId, studentId);
 		verify(studentConnector).getById(schoolId, studentId, fullDetail);
 	}
 
 	@Test
 	public void whenGetGradesIsEmpty() throws TransactionException {
-		when(gradeConnector.getByStudent(Mockito.any(), Mockito.any())).thenReturn(new ArrayList<>());
-		List<GradeDTO> grades = gradeServiceImpl.getGrades(schoolId, studentId.toString());
-		assertThat(grades.isEmpty()).isTrue();
+		when(activityConnector.getActivitiesByStudentId(Mockito.any(), Mockito.any())).thenReturn(new ArrayList<>());
+		List<ActivityDTO> activities = activityServiceImpl.getActivitiesByStudentId(schoolId, studentId.toString());
+		assertThat(activities.isEmpty()).isTrue();
 	}
 	
 	@Test
@@ -68,7 +67,7 @@ public class StudentServiceTest {
 		Mockito.when(studentConnector.getById(schoolId.toString(), studentId.toString(), fullDetail))
 		.thenThrow(StudentException.class);
 		assertThatExceptionOfType(StudentException.class).isThrownBy(() -> {
-			gradeServiceImpl.getGrades(schoolId.toString(), studentId.toString());
+			activityServiceImpl.getActivitiesByStudentId(schoolId.toString(), studentId.toString());
 		}).withMessage(null);
 	}
 

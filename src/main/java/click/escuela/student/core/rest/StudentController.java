@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import click.escuela.student.core.dto.ActivityDTO;
 import click.escuela.student.core.dto.GradeDTO;
 import click.escuela.student.core.dto.StudentDTO;
 import click.escuela.student.core.exception.TransactionException;
-import click.escuela.student.core.service.impl.StudentServiceImpl;
+import click.escuela.student.core.service.impl.ActivityServiceImpl;
+import click.escuela.student.core.service.impl.GradeServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -24,14 +26,25 @@ import io.swagger.v3.oas.annotations.responses.ApiResponse;
 public class StudentController {
 
 	@Autowired
-	private StudentServiceImpl studentService;
+	private GradeServiceImpl studentService;
+	
+	@Autowired
+	private ActivityServiceImpl activitytService;
 
-	@Operation(summary = "Get student by studentId", responses = {
+	@Operation(summary = "Get grades by studentId", responses = {
 			@ApiResponse(responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudentDTO.class))) })
 	@GetMapping("/{studentId}/grades")
-	public ResponseEntity<List<GradeDTO>> getById(@PathVariable("schoolId") String schoolId,
+	public ResponseEntity<List<GradeDTO>> getGradesByStudentId(@PathVariable("schoolId") String schoolId,
 			@PathVariable("studentId") String studentId) throws TransactionException {
 		return ResponseEntity.status(HttpStatus.ACCEPTED).body(studentService.getGrades(schoolId, studentId));
+	}
+	
+	@Operation(summary = "Get activities by studentId", responses = {
+			@ApiResponse(responseCode = "200", content = @Content(mediaType = "application/json", schema = @Schema(implementation = StudentDTO.class))) })
+	@GetMapping("/{studentId}/activities")
+	public ResponseEntity<List<ActivityDTO>> getActivitiesByStudentId(@PathVariable("schoolId") String schoolId,
+			@PathVariable("studentId") String studentId) throws TransactionException {
+		return ResponseEntity.status(HttpStatus.ACCEPTED).body(activitytService.getActivitiesByStudentId(schoolId, studentId));
 	}
 	
 }
