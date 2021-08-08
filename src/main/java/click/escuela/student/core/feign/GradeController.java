@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import click.escuela.student.core.dto.GradeDTO;
 
 
-@FeignClient(name = "grades", url ="${provider.grade.url}")
+@FeignClient(name = "grades")
 public interface GradeController {
 
-	@GetMapping(value = "/click-escuela/school/{schoolId}/grade/student/{studentId}")
+	@GetMapping(value = "/school/{schoolId}/grade/student/{studentId}")
 	public List<GradeDTO> getByStudent(@PathVariable("schoolId") String schoolId,
 			@PathVariable("studentId") String studentId);
 }
