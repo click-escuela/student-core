@@ -5,3 +5,6 @@ chmod +x /home/ec2-user/server/student-core/server_start.sh
 chmod +x /home/ec2-user/server/student-core/server_stop.sh
 chmod +x /home/ec2-user/server/student-core/server_clear.sh
 chmod +x /home/ec2-user/server/student-core/fix_privileges.sh
+chmod +x /home/ec2-user/server/student-core/logs
+chmod +x /home/ec2-user/server/student-core/logs/error.log
+chmod +x /home/ec2-user/server/student-core/logs/debug.log
