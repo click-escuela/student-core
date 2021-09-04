@@ -1,0 +1,26 @@
+2021-09-04 17:48:56 [main] INFO  o.h.validator.internal.util.Version -
+				HV000001: Hibernate Validator 6.2.0.Final
+2021-09-04 17:48:58 [main] INFO  o.s.mock.web.MockServletContext -
+				Initializing Spring TestDispatcherServlet ''
+2021-09-04 17:48:58 [main] INFO  o.s.t.w.s.TestDispatcherServlet -
+				Initializing Servlet ''
+2021-09-04 17:48:58 [main] INFO  o.s.t.w.s.TestDispatcherServlet -
+				Completed initialization in 7 ms
+2021-09-04 17:48:59 [main] INFO  o.s.mock.web.MockServletContext -
+				Initializing Spring TestDispatcherServlet ''
+2021-09-04 17:48:59 [main] INFO  o.s.t.w.s.TestDispatcherServlet -
+				Initializing Servlet ''
+2021-09-04 17:48:59 [main] INFO  o.s.t.w.s.TestDispatcherServlet -
+				Completed initialization in 1 ms
+2021-09-04 17:48:59 [main] INFO  o.s.mock.web.MockServletContext -
+				Initializing Spring TestDispatcherServlet ''
+2021-09-04 17:48:59 [main] INFO  o.s.t.w.s.TestDispatcherServlet -
+				Initializing Servlet ''
+2021-09-04 17:48:59 [main] INFO  o.s.t.w.s.TestDispatcherServlet -
+				Completed initialization in 1 ms
+2021-09-04 17:48:59 [main] INFO  o.s.mock.web.MockServletContext -
+				Initializing Spring TestDispatcherServlet ''
+2021-09-04 17:48:59 [main] INFO  o.s.t.w.s.TestDispatcherServlet -
+				Initializing Servlet ''
+2021-09-04 17:48:59 [main] INFO  o.s.t.w.s.TestDispatcherServlet -
+				Completed initialization in 1 ms
